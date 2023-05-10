@@ -31,7 +31,6 @@ df_null_check['Y'] = df_null_check['Y'].astype(int)
 
 print(df_null_check.head())
 msno.bar(df_null_check)
-# plt.show()
 
 # No null value found
 # Now implementing Linear Regression on dataset
@@ -46,7 +45,7 @@ plt.scatter(X, Y)
 plt.xlabel('X', fontsize=16)
 plt.ylabel('Y', fontsize=16)
 plt.title('Graph', fontsize=20)
-# plt.show()
+plt.show()
 
 # Spliting the data into train test set
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3)

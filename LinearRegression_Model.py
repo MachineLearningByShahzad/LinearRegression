@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.linalg import inv
-
+from scipy import stats
 
 """The LinearRegression class has four methods:
 
@@ -12,7 +12,8 @@ from numpy.linalg import inv
 Note that the implementation uses the closed-form solution to calculate the coefficients, which is more computationally 
 efficient than gradient descent for small datasets. However, the gradient_descent method is included for demonstration purposes."""
 
-class LinearRegression:
+
+class LinearRegressionModel:
     def __init__(self):
         self.coefficients = None
 
@@ -53,4 +54,13 @@ class LinearRegression:
             errors = predictions - y
             gradient = X.T.dot(errors) / len(X)
             self.coefficients -= alpha * gradient
+
+    def score(self, y_true, y_pred):
+        y_mean = np.mean(y_true)
+        ss_tot = np.sum((y_true - y_mean) ** 2)
+        ss_res = np.sum((y_true - y_pred) ** 2)
+        # Compute the R-squared value
+        r2 = 1 - (ss_res / ss_tot)
+
+        return r2
 
