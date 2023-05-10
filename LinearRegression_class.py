@@ -53,3 +53,4 @@ class LinearRegression:
             errors = predictions - y
             gradient = X.T.dot(errors) / len(X)
             self.coefficients -= alpha * gradient
+
